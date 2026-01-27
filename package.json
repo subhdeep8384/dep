@@ -4,6 +4,9 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
+    "web": "cd apps/web && bun run dev",
+    "ws": "cd apps/ws && bun run dev",
+    "backend": "cd apps/backend && bun run dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types"

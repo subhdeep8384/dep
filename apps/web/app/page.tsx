@@ -3,6 +3,8 @@ import { Button } from "@repo/ui/button";
 import styles from "./page.module.css";
 import { prisma } from "db/client";
 import { Suspense } from "react";
+import { console } from "inspector";
+import { log } from "console";
 
 type Props = Omit<ImageProps, "src"> & {
   srcLight: string;
@@ -19,7 +21,7 @@ const ThemeImage = (props: Props) => {
     </>
   );
 };
-
+console.log("chal raaha hai app page")
 export default function Home() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
