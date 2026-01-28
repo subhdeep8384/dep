@@ -27,7 +27,6 @@ app.post("/user", async (req, res) => {
     if (userExists) {
         return res.status(400).json({ message: "User already exists" });
     }
-
     const userCreated = await prisma.user.create({
         data: {
             username: req.body.username,
@@ -42,6 +41,11 @@ app.get("/todo", async (req, res) => {
     const todos = await prisma.todo.findMany();
     return res.json(todos);
 })
+
+app.get("/hello" , (req , res ) =>{
+    res.send("Hello World");
+})
+
 
 app.post("/todo", async (req, res) => {
     const todo = await prisma.todo.create({

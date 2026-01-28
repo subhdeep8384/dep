@@ -1,20 +1,15 @@
 FROM oven/bun:1
 
+WORKDIR /app
 
-WORKDIR /usr/src
+# copy root lock + config
+COPY package.json bun.lock turbo.json ./
 
-COPY packages ./packages
-RUN cd packages/db && bun install 
-RUN cd packages/db && bunx prisma generate 
+# copy only web app
+COPY apps/web ./apps/web
 
-
-COPY package*.json ./
-COPY ./bun.lock ./bun.lock
+WORKDIR /app/apps/web
 RUN bun install
 
-COPY apps/web ./apps/web
-RUN cd apps/web && bun install
-
 EXPOSE 3000
-
-CMD ["bun", "run", "web"]
+CMD ["bun", "run", "dev"]
